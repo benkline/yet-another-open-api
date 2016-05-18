@@ -1,5 +1,3 @@
 class User < ActiveRecord::Base
-
-has_many :Lists
-
+has_many :lists
 end

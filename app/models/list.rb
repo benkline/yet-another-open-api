@@ -1,4 +1,4 @@
 class List < ActiveRecord::Base
-  belongs_to :User
-  has_many :Items
+  belongs_to :user
+  has_many :items
 end
