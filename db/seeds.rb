@@ -5,3 +5,59 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+#
+# Create Users
+5.times do
+  user  = User.create!(
+  name:       Faker::Name.name,
+  email:      Faker::Internet.email,
+  password:   "helloworld",
+  bio:        Faker::Hipster.paragraph,
+  )
+
+user.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+user.update_attribute(:created_at, rand(1.minute .. 9.minutes).ago)
+
+end
+
+
+users = User.all
+
+# Create Lists
+15.times do
+  list = List.create!(
+  user:         users.sample,
+  title:        Faker::Hipster.word,
+  description:  Faker::Hipster.sentence,
+  emoji:        Faker::SlackEmoji.emoji,
+  )
+
+  list.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+  list.update_attribute(:created_at, rand(1.minute .. 9.minutes).ago)
+
+
+end
+
+lists = List.all
+
+
+# Create Items
+75.times do
+  item = Item.create!(
+  list:         lists.sample,
+  title:        Faker::Superhero.power,
+  description:  Faker::Hipster.sentence,
+)
+
+item.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+item.update_attribute(:created_at, rand(1.minute .. 9.minutes).ago)
+
+end
+
+
+#print results
+puts "Seed finished"
+puts "#{User.count} users created"
+puts "#{List.count} lists created"
+puts "#{Item.count} items created"
