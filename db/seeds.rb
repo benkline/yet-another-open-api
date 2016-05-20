@@ -9,41 +9,53 @@
 #
 # Create Users
 5.times do
-  User.create!(
+  user  = User.create!(
   name:       Faker::Name.name,
   email:      Faker::Internet.email,
   password:   "helloworld",
   bio:        Faker::Hipster.paragraph,
-  created_at: rand(10.minutes .. 1.year).ago,
-  updated_at: rand(10.minutes .. 1.year).ago
   )
+
+user.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+user.update_attribute(:created_at, rand(1.minute .. 9.minutes).ago)
+
 end
+
 
 users = User.all
 
 # Create Lists
 15.times do
-  List.create!(
-  user_id:    users.sample(1),
-  title:      Faker::Hipster.word,
-  emoji:      Faker::SlackEmoji.emoji,
-  created_at: rand(10.minutes .. 1.year).ago,
-  updated_at: rand(10.minutes .. 1.year).ago
+  list = List.create!(
+  user:         users.sample,
+  title:        Faker::Hipster.word,
+  description:  Faker::Hipster.sentence,
+  emoji:        Faker::SlackEmoji.emoji,
   )
+
+  list.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+  list.update_attribute(:created_at, rand(1.minute .. 9.minutes).ago)
+
+
 end
 
 lists = List.all
 
+
 # Create Items
 75.times do
-  Item.create!(
-  list_id:      lists.sample(1),
-  task:         Faker::Superhero.power,
+  item = Item.create!(
+  list:         lists.sample,
+  title:        Faker::Superhero.power,
   description:  Faker::Hipster.sentence,
-  created_at:   rand(10.minutes .. 1.year).ago,
-  updated_at:   rand(10.minutes .. 1.year).ago
 )
+
+item.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+item.update_attribute(:created_at, rand(1.minute .. 9.minutes).ago)
+
 end
+
+
 #print results
 puts "Seed finished"
 puts "#{User.count} users created"

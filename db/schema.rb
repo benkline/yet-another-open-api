@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20160518030749) do
 
   create_table "items", force: :cascade do |t|
     t.integer  "list_id"
-    t.string   "task"
+    t.string   "title"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -26,9 +26,10 @@ ActiveRecord::Schema.define(version: 20160518030749) do
   create_table "lists", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
+    t.text     "description"
     t.string   "emoji"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "lists", ["user_id"], name: "index_lists_on_user_id"
