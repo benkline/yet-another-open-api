@@ -9,16 +9,16 @@ class UserSerializer < ActiveModel::Serializer
      object.created_at.strftime('%B %d, %Y')
    end
 
-   def email
-     object.email
-   end
-
-   def password
-     object.password
-   end
-
-   def bio
-     object.bio
-   end
+  #  def email
+  #    object.email
+  #  end
+   #
+  #  def password
+  #    object.password
+  #  end
+   #
+  #  def bio
+  #    object.bio
+  #  end
 
  end
