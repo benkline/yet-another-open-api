@@ -13,7 +13,7 @@
   name:       Faker::Name.name,
   email:      Faker::Internet.email,
   password:   "helloworld",
-  bio:        Faker::Hipster.paragraph,
+  bio:        Faker::Hipster.word,
   )
 
 user.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
@@ -28,8 +28,8 @@ users = User.all
 15.times do
   list = List.create!(
   user:         users.sample,
-  title:        Faker::Hipster.word,
-  description:  Faker::Hipster.sentence,
+  title:        Faker::Hacker.noun,
+  description:  Faker::App.name
   emoji:        Faker::SlackEmoji.emoji,
   )
 
@@ -47,7 +47,7 @@ lists = List.all
   item = Item.create!(
   list:         lists.sample,
   title:        Faker::Superhero.power,
-  description:  Faker::Hipster.sentence,
+  description:  Faker::Superhero.name,
 )
 
 item.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)

@@ -1,12 +1,12 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :task, :description
+  attributes :title, :description, :id, :list_id
 
-  def task
-    object.task
-  end
-
-  def description
-    object.description
-  end
+  # def task
+  #   object.task
+  # end
+  #
+  # def description
+  #   object.description
+  # end
 
 end

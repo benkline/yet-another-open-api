@@ -1,16 +1,20 @@
 class ListSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :emoji
+  attributes :title, :description, :emoji, :id, :user_id  
 
-  def title
-    object.title
-  end
-
-  def description
-    object.description
-  end
-
-  def emoji
-    object.emoji
-  end
+  # def user
+  #   object.user
+  # end
+  #
+  # def title
+  #   object.title
+  # end
+  #
+  # def description
+  #   object.description
+  # end
+  #
+  # def emoji
+  #   object.emoji
+  # end
 
 end
