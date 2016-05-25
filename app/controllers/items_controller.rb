@@ -1,4 +1,4 @@
-class Api::ItemsController < ApiController
+class ItemsController < ApiController
   before_action :authenticated?
 
   def index
