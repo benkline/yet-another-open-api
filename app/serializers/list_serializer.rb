@@ -1,5 +1,5 @@
 class ListSerializer < ActiveModel::Serializer
-  attributes :title, :description, :emoji, :id, :user_id  
+  attributes :id, :user_id, :title, :description, :emoji, :public, :viewable  
 
   # def user
   #   object.user

@@ -8,9 +8,18 @@ class Api::ItemsController < ApiController
 
   def create
     item = Item.new(item_params)
-    item.list = List.find(params[:list_id])
+    item.item = Item.find(params[:item_id])
 
     if item.save
+      render json: item
+    else
+      render json: { errors: item.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    item = Item.find(params[:id])
+    if item.update(item_params)
       render json: item
     else
       render json: { errors: item.errors.full_messages }, status: :unprocessable_entity
@@ -20,7 +29,7 @@ class Api::ItemsController < ApiController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description)
+    params.require(:item).permit(:title, :description, :complete, :viewable, :private)
   end
 
 end

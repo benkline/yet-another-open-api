@@ -5,6 +5,8 @@ class CreateLists < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.string :emoji
+      t.boolean :viewable, :null => false, :default => true
+      t.boolean :public, :null => false, :default => true
       t.timestamps null: false
     end
   end
