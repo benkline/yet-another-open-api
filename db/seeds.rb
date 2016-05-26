@@ -29,8 +29,10 @@ users = User.all
   list = List.create!(
   user:         users.sample,
   title:        Faker::Hacker.noun,
-  description:  Faker::App.name
+  description:  Faker::App.name,
   emoji:        Faker::SlackEmoji.emoji,
+  viewable:     true,
+  public:       false
   )
 
   list.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
@@ -46,8 +48,11 @@ lists = List.all
 75.times do
   item = Item.create!(
   list:         lists.sample,
-  title:        Faker::Superhero.power,
-  description:  Faker::Superhero.name,
+  title:        Faker::Superhero.name,
+  description:  Faker::Superhero.power,
+  complete:     false,
+  viewable:     true,
+  public:       false
 )
 
 item.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)

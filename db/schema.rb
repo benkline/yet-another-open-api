@@ -17,8 +17,11 @@ ActiveRecord::Schema.define(version: 20160518030749) do
     t.integer  "list_id"
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "complete",    default: false, null: false
+    t.boolean  "viewable",    default: true,  null: false
+    t.boolean  "public",      default: false, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "items", ["list_id"], name: "index_items_on_list_id"
@@ -28,8 +31,10 @@ ActiveRecord::Schema.define(version: 20160518030749) do
     t.string   "title"
     t.text     "description"
     t.string   "emoji"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "viewable",    default: true,  null: false
+    t.boolean  "public",      default: false, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "lists", ["user_id"], name: "index_lists_on_user_id"
